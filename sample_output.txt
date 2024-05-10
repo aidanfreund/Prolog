@@ -1,0 +1,47 @@
+true.
+
+true.
+
+Testing yet_to_take/3
+true.
+
+
+Calling yet_to_take(john_doe, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses)
+Expected result: FutureCourses = [it261, it327, it328, it383]
+true.
+
+FutureCourses = [it261, it327, it328, it383] 
+
+Calling yet_to_take(jay_collins, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses)
+Expected result: FutureCourses = [it179, it180, it225, it261, it279, it327, it328, it383]
+true.
+
+FutureCourses = [it179, it180, it225, it261, it279, it327, it328, it383] 
+
+Calling yet_to_take(new_student, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses)
+Expected result: FutureCourses = [it168, it179, it180, it225, it261, it279, it327, it328, it383]
+true.
+
+FutureCourses = [it168, it179, it180, it225, it261, it279, it327, it328, it383] 
+
+Testing num_students_completed_course/3
+true.
+
+
+Calling num_students_completed_course(it279, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num)
+Expected result: Num = 1
+true.
+
+Num = 1 
+
+Calling num_students_completed_course(it168, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num)
+Expected result: Num = 4
+true.
+
+Num = 4 
+
+Calling num_students_completed_course(it328, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num)
+Expected result: Num = 0
+true.
+
+Num = 0 

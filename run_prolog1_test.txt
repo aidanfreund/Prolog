@@ -1,0 +1,69 @@
+% commands for testing course_rules.pl using course_info.pl
+% the blank lines are IMPORTANT
+
+consult(course_info).
+
+consult(course_rules).
+
+% tests for in_same_course/2
+format('Testing in_same_course/2').
+format('~nCalling in_same_course(john_doe, jane_doe)~nExpected result: true').
+in_same_course(john_doe, jane_doe).
+
+format('~nCalling in_same_course(john_doe, jay_collins)~nExpected result: false.').
+in_same_course(john_doe, jay_collins).
+
+format('~nCalling in_same_course(jeff_jones, Student2)~nExpected result: Student2 = mary_smith').
+in_same_course(jeff_jones, Student2).
+
+format('~nCalling in_same_course(Student1, mary_smith)~nExpected result: Student1 = john_doe').
+in_same_course(Student1, mary_smith).
+
+format('~nGathering all answers for in_same_course(john_doe, Student2)~nExpected result: Answer = [mary_smith, jane_doe]').
+findall(Student2, in_same_course(john_doe, Student2), Answer).
+
+% tests for taking_two_courses/1
+format('~nTesting taking_two_courses/1~n').
+format('~nCalling taking_two_courses(mary_smith)~nExpected result: true').
+taking_two_courses(mary_smith).
+
+format('~nCalling taking_two_courses(jay_collins)~nExpected result: false.').
+taking_two_courses(jay_collins).
+
+format('~nCalling taking_two_courses(Student)~nExpected result: Student = john_doe').
+taking_two_courses(Student).
+
+format('~nGathering all answers to taking_two_courses(Student)~nExpected result: Answer = [john_doe, john_doe, jane_doe, jane_doe, mary_smith, mary_smith, jeff_jones, jeff_jones, jeff_jones|...]').
+findall(Student, taking_two_courses(Student), Answer).
+
+format('~nGathering all unique answers to taking_two_courses(Student)~nExpected result: Answer = [jane_doe, jeff_jones, john_doe, mary_smith]').
+setof(Student, taking_two_courses(Student), Answer).
+
+% tests for before/2
+format('~nTesting before/2~n').
+format('~nCalling before(it168, it179)~nExpected result: true').
+before(it168, it179).
+
+format('~nCalling before(it168, it383)~nExpected result: true').
+before(it168, it383).
+
+format('~nCalling before(it180, it225)~nExpected result: false.').
+before(it180, it225).
+
+format('~nCalling before(it383, it225)~nExpected result: false.').
+before(it383, it225).
+
+format('~nCalling before(Course1, it179)~nExpected result: Course2 = it168').
+before(Course1, it179).
+
+format('~nCalling before(it179, Course2)~nExpected result: Course2 = it180').
+before(it179, Course2).
+
+format('~nGathering all answers to before(it179, Course2)~nExpected result: Answer = [it180, it327, it279, it383, it328].').
+findall(Course2, before(it179, Course2),Answer).
+
+format('~nGathering all answers to before(Course1, it383)~nExpected result: Answer = [it279, it225, it168, it179, it180, it168]..').
+findall(Course1, before(Course1, it383),Answer).
+
+
+halt.

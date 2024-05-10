@@ -1,0 +1,5 @@
+consult(logic_puzzle_example).
+
+solve_puzzle(Answer).
+
+halt.

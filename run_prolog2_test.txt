@@ -1,0 +1,30 @@
+% commands for testing course_rules.pl using course_info.pl
+% the blank lines are IMPORTANT
+
+consult(course_info).
+
+consult(more_course_rules).
+
+% tests for yet_to_take/3
+format('Testing yet_to_take/3').
+format('~nCalling yet_to_take(john_doe, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses)~nExpected result: FutureCourses = [it261, it327, it328, it383]').
+yet_to_take(john_doe, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses).
+
+format('~nCalling yet_to_take(jay_collins, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses)~nExpected result: FutureCourses = [it179, it180, it225, it261, it279, it327, it328, it383]').
+yet_to_take(jay_collins, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses).
+
+format('~nCalling yet_to_take(new_student, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses)~nExpected result: FutureCourses = [it168, it179, it180, it225, it261, it279, it327, it328, it383]').
+yet_to_take(new_student, [it168, it179, it180, it225, it261, it279, it327, it328, it383], FutureCourses).
+
+% tests for num_students_completed_course/3
+format('~nTesting num_students_completed_course/3').
+format('~nCalling num_students_completed_course(it279, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num)~nExpected result: Num = 1').
+num_students_completed_course(it279, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num).
+
+format('~nCalling num_students_completed_course(it168, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num)~nExpected result: Num = 4').
+num_students_completed_course(it168, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num).
+
+format('~nCalling num_students_completed_course(it328, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num)~nExpected result: Num = 0').
+num_students_completed_course(it328, [john_doe, mary_smith, jane_doe, jay_collins, jeff_jones, new_student], Num).
+
+halt.
